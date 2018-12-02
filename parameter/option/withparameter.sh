@@ -1,5 +1,7 @@
 #!/bin/bash
 # ======================================================
+# Demo of option with parameter. eg: ./withparameter.sh -a test sdfdsf dsfdsf
+
 cat $0
 if [ -e ../../lib/logger.sh ]; then
 	. ../../lib/logger.sh
@@ -10,28 +12,29 @@ fi
 
 while [ -n "$1" ]; do
 	case "$1" in
-	-a) logInfo "Found the -a option" ;;
+	-a) log_info "Found the -a option" ;;
 	-b)
-		bOptionParam="$2"
+		b_option_param="$2"
 		shift
 		;;
-	-c) logInfo "Found the -c option" ;;
+	-c) log_info "Found the -c option" ;;
 	--)
 		shift
 		break
 		;;
-	*) logInfo "$1 is not an option" ;;
+	*) log_info "$1 is not an option" ;;
 	esac
 	shift
 done
 
-if [ -n $bOptionParam ]; then
-	logInfo "Found the -b option, with parameter value $bOptionParam"
+# qouble quotes need for match empty string
+if [ -n "$b_option_param" ]; then
+	log_info "Found the -b option, with parameter value $b_option_param"
 fi
 
 count=1
 for param in "$@"; do
-	logDebug "Parameter #$count: $param"
+	log_debug "Parameter #$count: $param"
 	count=$(($count + 1))
 done
 # ======================================================

@@ -11,11 +11,11 @@ fi
 # param size
 parametersize=$#
 # get the last param
-logInfo parametersize use '${parasize}' = ${parametersize}
-logInfo lastparam use '${!parametersize}' = ${!parametersize}
-logInfo lastparam use '${!#}' = ${!#}
+log_info parametersize use '${parasize}' = ${parametersize}
+log_info lastparam use '${!parametersize}' = ${!parametersize}
+log_info lastparam use '${!#}' = ${!#}
 
 # wrong use
-logError '${$parametersize}' is wrong as follows
-logDebug ${$parametersize}
+log_error '${$parametersize}' is wrong as follows
+log_debug ${$parametersize}
 # ======================================================

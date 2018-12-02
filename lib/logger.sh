@@ -1,25 +1,21 @@
 #!/bin/bash
 # dash only support 'name()' not 'function name', so use 'name()' to define function
-logall() {
+echo_all_parameters() {
 	echo $*
 }
 
-logDebug() {
-	echo -n "[Debug]: "
-	logall $*
+log_debug() {
+	echo_all_parameters "[Debug]: $*"
 }
 
-logInfo() {
-	echo -n "[Info ]: "
-	logall $*
+log_info() {
+	echo_all_parameters "[Info ]: $*"
 }
 
-logWarn() {
-	echo -n "[Warn ]:  "
-	logall $*
+log_warn() {
+	echo_all_parameters "[Warn ]: $*"
 }
 
-logError() {
-	echo -n "[Error]:  "
-	logall $*
+log_error() {
+	echo_all_parameters "[Error]: $*"
 }

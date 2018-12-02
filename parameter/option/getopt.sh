@@ -1,9 +1,11 @@
 #!/bin/bash
 # ======================================================
-# For Linux, this special character is the double dash (--). 
-# The shell uses the double dash to indicate the end of the option list. 
-# After seeing the double dash, your script can safely process the 
-# remaining command line parameters as parameters and not options.
+# getopt command format
+# 	getopt optstring parameters
+# Warn:
+# 1. The getopt command isn’t good at dealing with parameter values with spaces and quotation marks.
+#    eg. /getopt.sh -a -b test1 -cd "test2 test3" test4
+set -- $(getopt -q ab:cp: "$@")
 
 cat $0
 if [ -e ../../lib/logger.sh ]; then
@@ -13,22 +15,27 @@ else
 	exit 1
 fi
 
+log_debug all parameter is $*
 while [ -n "$1" ]; do
 	case "$1" in
 	-a) log_info "Found the -a option" ;;
-	-b) log_info "Found the -b option" ;;
+	-b)
+		b_option_param="$2"
+		log_info "Found the -b option, with parameter value $b_option_param"
+		shift
+		;;
 	-c) log_info "Found the -c option" ;;
 	--)
 		shift
 		break
 		;;
-	*) log_warn "$1 is not an option" ;;
+	*) log_info "$1 is not an option" ;;
 	esac
 	shift
 done
-#
+
 count=1
-for param in $@; do
+for param in "$@"; do
 	log_debug "Parameter #$count: $param"
 	count=$(($count + 1))
 done

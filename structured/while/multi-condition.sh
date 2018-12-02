@@ -8,7 +8,7 @@ else
 	exit 1
 fi
 
-logInfo only the exit status of the last test command is used to determine when the loop stops
+log_info only the exit status of the last test command is used to determine when the loop stops
 sumMe=0
 me=0
 # do while, even though sumMe=0
@@ -18,6 +18,6 @@ while
 do
 	me=$(($me + 1))
 	sumMe=$(($sumMe + $me))
-	logDebug me = $me， sumMe = $sumMe
+	log_debug me = $me， sumMe = $sumMe
 done
 # ======================================================
