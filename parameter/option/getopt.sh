@@ -5,6 +5,8 @@
 # Warn:
 # 1. The getopt command isn’t good at dealing with parameter values with spaces and quotation marks.
 #    eg. /getopt.sh -a -b test1 -cd "test2 test3" test4
+
+# Assign any remaining arguments to the positional parameters
 set -- $(getopt -q ab:cp: "$@")
 
 cat $0
