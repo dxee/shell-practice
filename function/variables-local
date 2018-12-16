@@ -1,0 +1,9 @@
+#!/bin/bash
+local_var() {
+    read -p 'Enter you first name:' first_name
+    local last_name=Jack
+}
+
+local_var
+# last name absent
+echo $first_name $last_name
