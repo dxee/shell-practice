@@ -1,0 +1,12 @@
+#!/bin/bash
+ret() {
+    read -p 'Enter you first name:' first_name 
+    echo $first_name
+    ls bad_filename
+    read -p 'Enter you secound name:' last_name
+    echo $last_name
+}
+
+var=$(ret)
+
+echo $var
